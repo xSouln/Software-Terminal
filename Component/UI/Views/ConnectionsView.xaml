@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="Terminal.UI.ConnectionsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:commonTemplateSelectors="clr-namespace:xLibV100.UI.TemplateSelectors;assembly=xLib"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" MinHeight="500" Style="{StaticResource UserControlGlobalStyle}">
+    <UserControl.Resources>
+        <commonTemplateSelectors:UniversalCellTemplateSelector x:Key="InfoTemplateSelector" ColumnKey="Info"/>
+        <commonTemplateSelectors:UniversalCellTemplateSelector x:Key="OptionsTemplateSelector" ColumnKey="Options"/>
+        <commonTemplateSelectors:UniversalCellTemplateSelector x:Key="ActionsTemplateSelector" ColumnKey="Actions"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition MaxWidth="200" MinWidth="200"/>
+        </Grid.ColumnDefinitions>
+        <ListView x:Name="ListView" Width="auto" ItemsSource="{Binding Properties}" Style="{StaticResource ListViewStyle1}" SelectedValue="{Binding SelectedValue}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Loaded="ListView_Loaded">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Add bridge" Command="{Binding AddBridgeCommand}"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Model.Name}" Width="auto"/>
+                    <GridViewColumn Header="Info" CellTemplateSelector="{StaticResource InfoTemplateSelector}" Width="auto"/>
+                    <GridViewColumn Header="Options" CellTemplateSelector="{StaticResource OptionsTemplateSelector}" Width="auto"/>
+                    <GridViewColumn Header="Actions" CellTemplateSelector="{StaticResource ActionsTemplateSelector}" Width="auto"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="ButAdd" Content="Add" Margin="5,5,5,0" Style="{StaticResource ButtonStyle1}" VerticalAlignment="Top" Grid.Column="1" Click="ButAdd_Click"/>
+        <Button x:Name="ButRemove" Content="Remove" Margin="5,45,5,0" Style="{StaticResource ButtonStyle1}" VerticalAlignment="Top" Grid.Column="1" Click="ButRemove_Click"/>
+    </Grid>
+</UserControl>

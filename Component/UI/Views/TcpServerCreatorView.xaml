@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="Terminal.UI.TcpServerCreatorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:templateSelectors="clr-namespace:xLibV100.UI.TemplateSelectors;assembly=xLib"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Style="{StaticResource UserControlGlobalStyle}">
+    <UserControl.Resources>
+        <templateSelectors:UniversalCellTemplateSelector x:Key="ValueTemplateSelector" ColumnKey="Value"/>
+    </UserControl.Resources>
+    <Grid>
+        <ListView x:Name="ListView" Style="{StaticResource ListViewStyle2}" ItemsSource="{Binding Properties}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Loaded="ListView_Loaded">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="160"/>
+                    <GridViewColumn Header="Value" CellTemplateSelector="{StaticResource ValueTemplateSelector}" Width="auto"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>

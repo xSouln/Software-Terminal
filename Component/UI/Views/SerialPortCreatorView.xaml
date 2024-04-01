@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="Terminal.UI.SerialPortCreatorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Terminal.UI"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="450" Style="{StaticResource UserControlGlobalStyle}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition MaxHeight="40" MinHeight="40"/>
+            <RowDefinition MaxHeight="40" MinHeight="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Baud rate:" Style="{StaticResource LabelGlobalStyle}" Margin="0,0,0,0" HorizontalAlignment="Left"/>
+        <Label Content="Port name:" Style="{StaticResource LabelGlobalStyle}" Grid.Row="1" Margin="0,0,0,0" HorizontalAlignment="Left"/>
+        <ComboBox x:Name="ComboBoxBaudRate" ItemsSource="{Binding BaudRateList}" Style="{StaticResource ComboBoxStyle1}" Text="{Binding BaudRate}" IsEditable="True" Margin="100,3,0,3" HorizontalAlignment="Left" Width="139"/>
+        <ComboBox x:Name="ComboBoxPorts" ItemsSource="{Binding PortList}" Style="{StaticResource ComboBoxStyle1}" Text="{Binding PortName}" Margin="100,3,0,3" Grid.Row="1" HorizontalAlignment="Left" Width="139"/>
+
+    </Grid>
+</UserControl>

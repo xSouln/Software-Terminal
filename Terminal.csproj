@@ -1,0 +1,294 @@
+﻿<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8ADD9292-33B5-421D-B761-29F898A4DEDE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Terminal</RootNamespace>
+    <AssemblyName>Terminal</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\CSharp_DevicePattern\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\CSharp_DevicePattern\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\CSharp_DevicePattern\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\CSharp_DevicePattern\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\CSharp_DevicePattern\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\CSharp_DevicePattern\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\CSharp_DevicePattern\packages\System.Text.Encodings.Web.8.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=8.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\CSharp_DevicePattern\packages\System.Text.Json.8.0.3\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\CSharp_DevicePattern\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\CSharp_DevicePattern\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Component\Communications.cs" />
+    <Compile Include="Component\Control.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Component\UI\Adapters\TabControlAdapter.cs" />
+    <Compile Include="Component\UI\Interfaces\IAvailablePortsForBridgeViewModel.cs" />
+    <Compile Include="Component\UI\Interfaces\IBridgeOfPortViewModel.cs" />
+    <Compile Include="Component\UI\Interfaces\IBridgesOfPortsViewModel.cs" />
+    <Compile Include="Component\UI\Interfaces\ICloseableViewModel.cs" />
+    <Compile Include="Component\UI\Interfaces\IConnectionCreatorViewModel.cs" />
+    <Compile Include="Component\UI\Interfaces\IConnectionCreatorViewModels.cs" />
+    <Compile Include="Component\UI\Interfaces\IConnectionsViewModel.cs" />
+    <Compile Include="Component\UI\Interfaces\IControlViewModel.cs" />
+    <Compile Include="Component\UI\Interfaces\IMqttBrokerAddTopicAction.cs" />
+    <Compile Include="Component\UI\Interfaces\IMqttBrokerCreatorViewModel.cs" />
+    <Compile Include="Component\UI\Interfaces\IMqttBrokerTopicCreatorViewModel.cs" />
+    <Compile Include="Component\UI\Interfaces\IMqttClientCreatorViewModel.cs" />
+    <Compile Include="Component\UI\Interfaces\IMqttClientTopicCreatorViewModel.cs" />
+    <Compile Include="Component\UI\Interfaces\IMqttClientViewModel.cs" />
+    <Compile Include="Component\UI\Interfaces\IPortInfoViewModel.cs" />
+    <Compile Include="Component\UI\Interfaces\IPortOptionsViewModel.cs" />
+    <Compile Include="Component\UI\Interfaces\IPortViewModel.cs" />
+    <Compile Include="Component\UI\Interfaces\ISerialPortCreatorViewModel.cs" />
+    <Compile Include="Component\UI\Interfaces\ITCPServerCreatorViewModel.cs" />
+    <Compile Include="Component\UI\Interfaces\ITCPServerOptionsViewModel.cs" />
+    <Compile Include="Component\UI\Interfaces\ITCPServerViewModel.cs" />
+    <Compile Include="Component\UI\Models\AvailablePortForBridgeViewModel.cs" />
+    <Compile Include="Component\UI\Models\AvailablePortsForBridgeViewModel.cs" />
+    <Compile Include="Component\UI\Models\BridgeOfPortViewModel.cs" />
+    <Compile Include="Component\UI\Models\BridgesOfPortsViewModel.cs" />
+    <Compile Include="Component\UI\Models\ConnectionCreatorViewModel.cs" />
+    <Compile Include="Component\UI\Models\ConnectionsViewModel.cs" />
+    <Compile Include="Component\UI\Models\ControlViewModel.cs" />
+    <Compile Include="Component\UI\Models\MqttBrokerCreatorViewModel.cs" />
+    <Compile Include="Component\UI\Models\MqttBrokerViewModel.cs" />
+    <Compile Include="Component\UI\Models\MqttClientCreatorViewModel.cs" />
+    <Compile Include="Component\UI\Models\MqttClientViewModel.cs" />
+    <Compile Include="Component\UI\Models\MqttTopicsViewModel.cs" />
+    <Compile Include="Component\UI\Models\MqttTopicViewModel.cs" />
+    <Compile Include="Component\UI\Models\SerialPortCreatorViewModel.cs" />
+    <Compile Include="Component\UI\Models\SerialPortViewModel.cs" />
+    <Compile Include="Component\UI\Models\TcpClientCreatorViewModel.cs" />
+    <Compile Include="Component\UI\Models\TcpClientViewModel.cs" />
+    <Compile Include="Component\UI\Models\TCPServerCreatorViewModel.cs" />
+    <Compile Include="Component\UI\Models\TCPServerOptionsViewModel.cs" />
+    <Compile Include="Component\UI\Models\TCPServerViewModel.cs" />
+    <Compile Include="Component\UI\TemplateSelectors\ActionsTemplateSelector.cs" />
+    <Compile Include="Component\UI\TemplateSelectors\InfoTemplateSelector.cs" />
+    <Compile Include="Component\UI\TemplateSelectors\OptionsTemplateSelector.cs" />
+    <Compile Include="Component\UI\Views\AvailablePortsForBridgeView.xaml.cs">
+      <DependentUpon>AvailablePortsForBridgeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Component\UI\Views\BridgesOfPorts.xaml.cs">
+      <DependentUpon>BridgesOfPorts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Component\UI\Views\ConnectActionView.xaml.cs">
+      <DependentUpon>ConnectActionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Component\UI\Views\ConnectionCreatorView.xaml.cs">
+      <DependentUpon>ConnectionCreatorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Component\UI\Views\ConnectionsView.xaml.cs">
+      <DependentUpon>ConnectionsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Component\UI\Views\ControlView.xaml.cs">
+      <DependentUpon>ControlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Component\UI\Views\MqttBrokerActionView.xaml.cs">
+      <DependentUpon>MqttBrokerActionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Component\UI\Views\MqttBrokerCreatorView.xaml.cs">
+      <DependentUpon>MqttBrokerCreatorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Component\UI\Views\MqttBrokerOptionsView.xaml.cs">
+      <DependentUpon>MqttBrokerOptionsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Component\UI\Views\MqttBrokerTopicCreatorView.xaml.cs">
+      <DependentUpon>MqttBrokerTopicCreatorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Component\UI\Views\MqttClientActionView.xaml.cs">
+      <DependentUpon>MqttClientActionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Component\UI\Views\MqttClientAddTopicWindow.xaml.cs">
+      <DependentUpon>MqttClientAddTopicWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Component\UI\Views\MqttClientCreatorView.xaml.cs">
+      <DependentUpon>MqttClientCreatorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Component\UI\Views\MqttClientOptionsView.xaml.cs">
+      <DependentUpon>MqttClientOptionsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Component\UI\Views\MqttTopicsView.xaml.cs">
+      <DependentUpon>MqttTopicsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Component\UI\Views\SerialPortCreatorView.xaml.cs">
+      <DependentUpon>SerialPortCreatorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Component\UI\Views\TcpClientCreatorView.xaml.cs">
+      <DependentUpon>TcpClientCreatorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Component\UI\Views\TcpClientOptionsView.xaml.cs">
+      <DependentUpon>TcpClientOptionsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Component\UI\Views\TcpServerCreatorView.xaml.cs">
+      <DependentUpon>TcpServerCreatorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Component\UI\Views\TcpServerOptionsView.xaml.cs">
+      <DependentUpon>TcpServerOptionsView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Component\UI\Views\AvailablePortsForBridgeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Component\UI\Views\BridgesOfPorts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Component\UI\Views\ConnectActionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Component\UI\Views\ConnectionCreatorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Component\UI\Views\ConnectionsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Component\UI\Views\ControlView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Component\UI\Views\MqttBrokerActionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Component\UI\Views\MqttBrokerCreatorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Component\UI\Views\MqttBrokerOptionsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Component\UI\Views\MqttBrokerTopicCreatorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Component\UI\Views\MqttClientActionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Component\UI\Views\MqttClientAddTopicWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Component\UI\Views\MqttClientCreatorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Component\UI\Views\MqttClientOptionsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Component\UI\Views\MqttTopicsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Component\UI\Views\SerialPortCreatorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Component\UI\Views\TcpClientCreatorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Component\UI\Views\TcpClientOptionsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Component\UI\Views\TcpServerCreatorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Component\UI\Views\TcpServerOptionsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Component\Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(Software-xLibV100)\xLib-V100.csproj">
+	<Project>{432e4c88-9a89-40f1-be0b-73bab489d3f3}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

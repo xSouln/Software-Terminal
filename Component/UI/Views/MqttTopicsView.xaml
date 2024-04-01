@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="Terminal.UI.MqttTopicsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Terminal.UI"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" MinHeight="300" Style="{StaticResource UserControlGlobalStyle}">
+    <UserControl.Resources>
+        <Style x:Key="CommonButtonStyle" TargetType="Button" BasedOn="{StaticResource ButtonStyle1}">
+            <Setter Property="Width" Value="auto"/>
+            <Setter Property="Height" Value="auto"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="CommandParameter">
+                <Setter.Value>
+                    <Binding RelativeSource="{RelativeSource Self}" Path="DataContext"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Content, RelativeSource={RelativeSource Self}}" Value="true">
+                    <Setter Property="Background" Value="#FF641818"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Content, RelativeSource={RelativeSource Self}}" Value="false">
+                    <Setter Property="Background" Value="#FF21662A"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" MinWidth="150" MaxWidth="150"/>
+        </Grid.ColumnDefinitions>
+        <ListView x:Name="ListView" Style="{StaticResource ListViewStyle1}" ItemsSource="{Binding Model.SubPorts}" SelectedValue="{Binding SelectedTopic}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Parent" DisplayMemberBinding="{Binding Parent.Name}" Width="100"/>
+                    
+                    <GridViewColumn Header="Name" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Name}" BorderThickness="0" Style="{StaticResource TextBoxGlobalStyle}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Topic name" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding TopicName}" BorderThickness="0" Style="{StaticResource TextBoxGlobalStyle}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Is writable" Width="120">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding IsWriteable}"
+                                        Style="{StaticResource CommonButtonStyle}"
+                                        MinWidth="80" Height="25"
+                                        Command="{Binding DataContext.IsWritableClickCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
+                                </Button>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Is subscribed" Width="120">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding IsSubscribed}"
+                                        Style="{StaticResource CommonButtonStyle}"
+                                        MinWidth="80" Height="25"
+                                        Command="{Binding DataContext.IsSubscribedClickCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
+                                </Button>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="ButAdd" Command="{Binding AddTopicCommand}" Content="Add" Margin="5,5,5,0" Style="{StaticResource ButtonStyle1}" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1"/>
+        <Button x:Name="ButRemove" Command="{Binding RemoveTopicCommand}" Content="Remove" Margin="5,45,5,0" Style="{StaticResource ButtonStyle1}" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="Terminal.UI.AvailablePortsForBridgeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:commonTemplateSelectors="clr-namespace:xLibV100.UI.TemplateSelectors;assembly=xLib"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Style="{StaticResource UserControlGlobalStyle}">
+    <UserControl.Resources>
+        <commonTemplateSelectors:UniversalCellTemplateSelector x:Key="TemplateSelector" ColumnKey="Info"/>
+        <commonTemplateSelectors:UniversalCellTemplateSelector x:Key="ParentTemplateSelector" ColumnKey="Parent"/>
+
+        <LinearGradientBrush x:Key="BrushPortIsAvailible" StartPoint="0,0" EndPoint="1,0">
+            <GradientBrush.GradientStops>
+                <GradientStopCollection>
+                    <GradientStop Color="#3f3f46" Offset="0.0"/>
+                    <GradientStop Color="#4a7367" Offset="0.33"/>
+                    <GradientStop Color="#4a7367" Offset="0.66"/>
+                    <GradientStop Color="#3f3f46" Offset="1.0"/>
+                </GradientStopCollection>
+            </GradientBrush.GradientStops>
+        </LinearGradientBrush>
+
+        <Style x:Key="ExtendedButtonStyle" TargetType="Button" BasedOn="{StaticResource ButtonStyle1}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding PortIsAvailible}" Value="True">
+                    <Setter Property="Background" Value="{StaticResource BrushPortIsAvailible}"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding PortIsAvailible}" Value="False">
+                    <Setter Property="Background" Value="Green"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <ListView x:Name="ListView" Style="{StaticResource ListViewStyle1}" ItemsSource="{Binding Properties}" SelectedValue="{Binding SelectedPort}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Model.Name}" Width="160"/>
+                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Model.Id}" Width="160"/>
+                    <GridViewColumn Header="Parent" CellTemplateSelector="{StaticResource ParentTemplateSelector}" Width="auto"/>
+                    <GridViewColumn Header="Info" CellTemplateSelector="{StaticResource TemplateSelector}" Width="auto"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="ButApply" Content="Apply" Margin="0,5,0,0" Style="{StaticResource ExtendedButtonStyle}" Grid.Row="1" Width="200" Command="{Binding ApplyCommand}" HorizontalAlignment="Right">
+            
+        </Button>
+    </Grid>
+</UserControl>

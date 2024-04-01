@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="Terminal.UI.MqttBrokerActionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Terminal.UI"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Style="{StaticResource UserControlGlobalStyle}" VerticalContentAlignment="Top">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="ButConnectAction" Height="auto" Content="{Binding ConnectionStateName}" Background="{Binding ConnectionStateBackground}" IsEnabled="{Binding ConnectionIsAvailable}" Margin="0,0,0,0" Style="{StaticResource ButtonStyle1}" Width="110" Click="ButConnectAction_Click"/>
+        <Button x:Name="ButAddTopic" Grid.Row="1" Height="auto" Content="Add topic" Margin="0,5,0,0" Style="{StaticResource ButtonStyle1}" Width="110" Click="ButAddTopic_Click"/>
+    </Grid>
+</UserControl>

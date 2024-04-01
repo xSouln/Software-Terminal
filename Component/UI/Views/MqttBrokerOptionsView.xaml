@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="Terminal.UI.MqttBrokerOptionsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Terminal.UI"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="ButShow" Height="auto" Content="Show" Margin="0,0,0,0" Style="{StaticResource ButtonStyle1}" Click="ButShow_Click"/>
+        <GroupBox Grid.Column="0" Visibility="{Binding OptionsVisibility}" Style="{StaticResource GroupBoxGlobalStyle}" Header="Options" Grid.Row="1" Grid.RowSpan="1" Margin="0,5,0,0" >
+            <Grid Margin="0,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="100*"/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" MinWidth="75"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition MaxHeight="35" MinHeight="35"/>
+                        <RowDefinition MaxHeight="35" MinHeight="35"/>
+                        <RowDefinition MaxHeight="35" MinHeight="35"/>
+
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="name:" VerticalAlignment="Stretch" Style="{StaticResource LabelGlobalStyle}"/>
+                    <TextBox HorizontalAlignment="Stretch" Text="{Binding Model.Name}" Width="auto" Style="{StaticResource TextBoxGlobalStyle}" IsEnabled="{Binding OptionsIsAvailable}" Margin="0,3" Grid.Row="0" Grid.Column="1"/>
+
+                    <Label Content="ip:" VerticalAlignment="Stretch" Style="{StaticResource LabelGlobalStyle}" Grid.Row="1"/>
+                    <TextBox HorizontalAlignment="Stretch" Text="{Binding Model.Ip}" Width="auto" Style="{StaticResource TextBoxGlobalStyle}" IsEnabled="{Binding OptionsIsAvailable}" Margin="0,3" Grid.Row="1" Grid.Column="1"/>
+
+                    <Label Content="port:" VerticalAlignment="Stretch" Style="{StaticResource LabelGlobalStyle}" Grid.Row="2"/>
+                    <TextBox HorizontalAlignment="Stretch" Text="{Binding Model.Port}" Width="auto" Style="{StaticResource TextBoxGlobalStyle}" IsEnabled="{Binding OptionsIsAvailable}" Margin="0,3" Grid.Row="2" Grid.Column="1"/>
+                </Grid>
+                <ListView x:Name="ListView" Style="{StaticResource ListViewStyle1}" ItemsSource="{Binding Model.SubPorts}" SelectedValue="{Binding SelectedTopic}" Grid.Row="1">
+                    <ListView.View>
+                        <GridView ColumnHeaderContainerStyle="{StaticResource ListViewItemContainerStyle1}">
+                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="160"/>
+                            <GridViewColumn Header="RxTopic" DisplayMemberBinding="{Binding RxTopicName}" Width="auto"/>
+                            <GridViewColumn Header="TxTopic" DisplayMemberBinding="{Binding TxTopicName}" Width="auto"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>
