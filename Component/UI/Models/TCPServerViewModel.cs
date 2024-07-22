@@ -6,7 +6,7 @@ using xLibV100.Ports;
 
 namespace Terminal.UI
 {
-    public class TCPServerViewModel : ViewModelBase<PortBase, IViewBase<ITCPServerViewModel>>, ITCPServerViewModel, IPortViewModel, ICellElement
+    public class TCPServerViewModel : ViewModelBase<PortBase, FrameworkElement>, ITCPServerViewModel, IPortViewModel, ICellElement
     {
         public DataTemplate ActionTemplate { get; protected set; }
 

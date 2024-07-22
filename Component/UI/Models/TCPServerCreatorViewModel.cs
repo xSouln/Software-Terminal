@@ -5,7 +5,6 @@ using System.Reflection;
 using System.Windows;
 using xLibV100.Controls;
 using xLibV100.Net;
-using xLibV100.UI;
 
 namespace Terminal.UI
 {

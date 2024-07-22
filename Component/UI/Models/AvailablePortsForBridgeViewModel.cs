@@ -4,7 +4,6 @@ using System.Linq;
 using System.Windows;
 using xLibV100.Controls;
 using xLibV100.Ports;
-using xLibV100.UI;
 
 namespace Terminal.UI
 {
@@ -28,14 +27,19 @@ namespace Terminal.UI
 
             foreach (var port in model.AvailablePorts)
             {
-                if (port.Role != Roles.Server)
+                var viewModel = new AvailablePortForBridgeViewModel(port) { Parent = this };
+                viewModel.ViewUpdateEvent += SubViewUpdateEventHandler;
+
+                Properties.Add(viewModel);
+
+                /*if (port.Role != Roles.Server)
                 {
                     var viewModel = new AvailablePortForBridgeViewModel(port) { Parent = this };
                     viewModel.ViewUpdateEvent += SubViewUpdateEventHandler;
 
                     Properties.Add(viewModel);
-                }
-                else
+                }*/
+                if (port.Role == Roles.Server)
                 {
                     Servers.Add(port);
 
@@ -44,7 +48,7 @@ namespace Terminal.UI
 
                     foreach (var subport in port.SubPorts)
                     {
-                        var viewModel = new AvailablePortForBridgeViewModel(subport) { Parent = this };
+                        viewModel = new AvailablePortForBridgeViewModel(subport) { Parent = this };
                         viewModel.ViewUpdateEvent += SubViewUpdateEventHandler;
 
                         Properties.Add(viewModel);
@@ -142,18 +146,23 @@ namespace Terminal.UI
 
         private void PortAddedHandler(TerminalBase terminal, PortBase port)
         {
-            if (port.Role != Roles.Server)
+            var viewModel = new AvailablePortForBridgeViewModel(port) { Parent = this };
+            viewModel.ViewUpdateEvent += SubViewUpdateEventHandler;
+
+            Properties.Add(viewModel);
+
+            /*if (port.Role != Roles.Server)
             {
                 var viewModel = new AvailablePortForBridgeViewModel(port) { Parent = this };
                 viewModel.ViewUpdateEvent += SubViewUpdateEventHandler;
 
                 Properties.Add(viewModel);
-            }
-            else
+            }*/
+            if (port.Role == Roles.Server)
             {
                 foreach (var subport in port.SubPorts)
                 {
-                    var viewModel = new AvailablePortForBridgeViewModel(subport) { Parent = this };
+                    viewModel = new AvailablePortForBridgeViewModel(subport) { Parent = this };
                     viewModel.ViewUpdateEvent += SubViewUpdateEventHandler;
 
                     Properties.Add(viewModel);

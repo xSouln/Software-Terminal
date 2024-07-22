@@ -1,7 +1,6 @@
 ﻿using xLibV100.UI;
 using System.Windows;
 using System.Windows.Controls;
-using xLibV100.UI;
 
 namespace Terminal.UI
 {

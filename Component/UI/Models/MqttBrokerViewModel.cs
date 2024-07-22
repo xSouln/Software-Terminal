@@ -4,7 +4,6 @@ using System.Windows.Media;
 using xLibV100.Controls;
 using xLibV100.Net.MQTT;
 using xLibV100.Ports;
-using xLibV100.UI;
 using xLibV100.Windows;
 
 namespace Terminal.UI

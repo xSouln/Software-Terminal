@@ -3,7 +3,6 @@ using xLibV100.UI;
 using System.Windows;
 using System.Windows.Media;
 using xLibV100.Ports;
-using xLibV100.UI;
 
 namespace Terminal.UI
 {

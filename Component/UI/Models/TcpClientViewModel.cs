@@ -4,7 +4,6 @@ using System.Windows;
 using System.Windows.Media;
 using xLibV100.Net;
 using xLibV100.Ports;
-using xLibV100.UI;
 
 namespace Terminal.UI
 {

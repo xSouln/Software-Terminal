@@ -69,14 +69,13 @@ namespace Terminal
                 }
             }
 
-            //convert = xConverter.ToStrHex(data, data_size);
             var convertedData = xConverter.GetString(arg.DataPtr,
                 arg.PacketSize,
                 new byte[] { (byte)'\n' });
 
             if (convertedData.Length > 0)
             {
-                xTracer.Message("unidentified from " + port.Name, convertedData);
+                xTracer.Message("unidentified from " + port.Name, convertedData + "\rhex: " + xConverter.ToStrHex(arg.DataPtr, arg.PacketSize));
             }
 
             port.ToBridgePorts(arg);

@@ -2,7 +2,6 @@
 using xLibV100.UI;
 using System.Windows;
 using xLibV100.Net.MQTT;
-using xLibV100.UI;
 
 namespace Terminal.UI
 {
