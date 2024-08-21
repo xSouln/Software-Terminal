@@ -286,6 +286,7 @@
   <ItemGroup>
     <ProjectReference Include="$(Software-xLibV100)\xLib-V100.csproj">
       <Project>{432e4c88-9a89-40f1-be0b-73bab489d3f3}</Project>
+      <Name>xLib-V100</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
