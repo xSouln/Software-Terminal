@@ -276,7 +276,7 @@ namespace Terminal.UI
             ConnectionCreatorViewPrecenter = null;
         }
 
-        public void Open()
+        public override int Open()
         {
             if (ViewPrecenter == null)
             {
@@ -303,6 +303,8 @@ namespace Terminal.UI
             {
                 ViewPrecenter.Activate();
             }
+
+            return 0;
         }
 
         public void Add()

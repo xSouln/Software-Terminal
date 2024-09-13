@@ -2,7 +2,7 @@
 {
     public interface IConnectionsViewModel
     {
-        void Open();
+        int Open();
         void Close();
         void Add();
         void Remove();
