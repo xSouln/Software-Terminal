@@ -75,7 +75,8 @@ namespace Terminal
 
             if (convertedData.Length > 0)
             {
-                xTracer.Message("unidentified from " + port.Name, convertedData + "\rhex: " + xConverter.ToStrHex(arg.DataPtr, arg.PacketSize));
+                string hexData = "\rhex: " + xConverter.ToStrHex(arg.DataPtr, arg.PacketSize);
+                xTracer.Message("unidentified from " + port.Name, convertedData);
             }
 
             port.ToBridgePorts(arg);
