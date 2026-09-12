@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Threading;
+using System.Xml.Linq;
 using Terminal.UI;
 using xLibV100.Common;
 using xLibV100.Controls;
@@ -45,7 +46,7 @@ namespace Terminal
                     {
                         if (port.Options != null)
                         {
-                            var options = JsonSerializer.Deserialize<SerialPortOptions>((JsonElement)port.Options, new JsonSerializerOptions());
+                            var options = Json.Deserialize<SerialPortOptions>(port.Options);
                             port.Options = options;
                         }
                         createdPort = new SerialPort(port);
@@ -54,7 +55,7 @@ namespace Terminal
                     {
                         if (port.Options != null)
                         {
-                            var options = JsonSerializer.Deserialize<TCPClientOptions>((JsonElement)port.Options, new JsonSerializerOptions());
+                            var options = Json.Deserialize<TCPClientOptions>(port.Options);
                             port.Options = options;
                         }
                         createdPort = new TCPClient(port);
@@ -63,7 +64,7 @@ namespace Terminal
                     {
                         if (port.Options != null)
                         {
-                            var options = JsonSerializer.Deserialize<TCPServerOptions>((JsonElement)port.Options, new JsonSerializerOptions());
+                            var options = Json.Deserialize<TCPServerOptions>(port.Options);
                             port.Options = options;
                         }
                         createdPort = TCPServer.Create(port);
@@ -72,7 +73,7 @@ namespace Terminal
                     {
                         if (port.Options != null)
                         {
-                            var options = JsonSerializer.Deserialize<MqttBrokerOptions>((JsonElement)port.Options, new JsonSerializerOptions());
+                            var options = Json.Deserialize<MqttBrokerOptions>(port.Options);
                             port.Options = options;
                         }
                         createdPort = new MqttBrokerViewModel(port);
@@ -90,7 +91,7 @@ namespace Terminal
                                     var subPort = new MqttBrokerTopic(element);
                                     if (element.Options != null)
                                     {
-                                        var options = JsonSerializer.Deserialize<MqttBrokerTopicOptions>((JsonElement)element.Options, new JsonSerializerOptions());
+                                        var options = Json.Deserialize<MqttBrokerTopicOptions>(port.Options);
                                         subPort.Options = options;
                                     }
                                     createdPort.AddSubPort(subPort);
@@ -102,7 +103,7 @@ namespace Terminal
                     {
                         if (port.Options != null)
                         {
-                            var options = JsonSerializer.Deserialize<MqttClientOptions>((JsonElement)port.Options, new JsonSerializerOptions());
+                            var options = Json.Deserialize<MqttClientOptions>(port.Options);
                             port.Options = options;
                         }
 
@@ -122,7 +123,7 @@ namespace Terminal
 
                                     if (element.Options != null)
                                     {
-                                        var options = JsonSerializer.Deserialize<MqttTopicOptions>((JsonElement)element.Options, new JsonSerializerOptions());
+                                        var options = Json.Deserialize<MqttTopicOptions>(port.Options);
                                         subPort.Options = options;
                                     }
                                     createdPort.AddSubPort(subPort);
